@@ -44,6 +44,14 @@ namespace School_Management_System
             {
                 MessageBox.Show("Missing Information");
             }
+            else if (!IsValidName(txt_stuname.Text))
+            {
+                MessageBox.Show("Invalid Name. Only letters are allowed.", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            }
+            else if (!IsValidFees(txt_fees.Text))
+            {
+                MessageBox.Show("Invalid Fees Amount. Only numbers are allowed.", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            }
             else
             {
                 try
@@ -69,6 +77,16 @@ namespace School_Management_System
                 }
                 
             }
+        }
+
+        //Validations
+        private bool IsValidName(string name)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(name, @"^[a-zA-Z]+$");
+        }
+        private bool IsValidFees(string number)
+        {
+            return int.TryParse(number, out _);
         }
 
         //Close Application
@@ -144,6 +162,14 @@ namespace School_Management_System
             if (txt_stuname.Text == "" || txt_fees.Text == "" || txt_stuadd.Text == "" || cmb_gender.SelectedIndex == -1 || cmb_grade.SelectedIndex == -1)
             {
                 MessageBox.Show("Missing Information");
+            }
+            else if (!IsValidName(txt_stuname.Text))
+            {
+                MessageBox.Show("Invalid Name. Only letters are allowed.", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            }
+            else if (!IsValidFees(txt_fees.Text))
+            {
+                MessageBox.Show("Invalid Fees Amount. Only numbers are allowed.", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             }
             else
             {

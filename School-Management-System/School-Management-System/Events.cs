@@ -48,6 +48,14 @@ namespace School_Management_System
             {
                 MessageBox.Show("Missing Information");
             }
+            else if (!IsValidEvent(txt_event.Text))
+            {
+                MessageBox.Show("Invalid Event Name. Only letters are allowed.", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            }
+            else if (!IsValidHours(txt_duration.Text))
+            {
+                MessageBox.Show("Invalid number of hours. Only numbers are allowed.", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            }
             else
             {
                 try
@@ -72,6 +80,16 @@ namespace School_Management_System
                 }
 
             }
+        }
+
+        //Validations
+        private bool IsValidEvent(string name)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(name, @"^[a-zA-Z]+$");
+        }
+        private bool IsValidHours(string number)
+        {
+            return int.TryParse(number, out _);
         }
 
         //Delete Event
@@ -139,6 +157,14 @@ namespace School_Management_System
             if (txt_event.Text == "" || txt_duration.Text == "")
             {
                 MessageBox.Show("Missing Information");
+            }
+            else if (!IsValidEvent(txt_event.Text))
+            {
+                MessageBox.Show("Invalid Event Name. Only letters are allowed.", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            }
+            else if (!IsValidHours(txt_duration.Text))
+            {
+                MessageBox.Show("Invalid number of hours. Only numbers are allowed.", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             }
             else
             {

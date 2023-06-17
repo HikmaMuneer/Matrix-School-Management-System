@@ -81,6 +81,10 @@ namespace School_Management_System
             {
                 MessageBox.Show("Missing Information");
             }
+            else if (!IsValidAmount(txt_amt.Text))
+            {
+                MessageBox.Show("Invalid Amount. Only numbers are allowed.", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            }
             else
             {
                 string paymentperiod;
@@ -111,6 +115,12 @@ namespace School_Management_System
                 DisplayPayments();
                 Reset();
             }
+        }
+
+        //Validations
+        private bool IsValidAmount(string number)
+        {
+            return int.TryParse(number, out _);
         }
 
         //Close Application

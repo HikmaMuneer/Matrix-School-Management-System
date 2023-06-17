@@ -281,6 +281,7 @@
             this.txt_tname.Name = "txt_tname";
             this.txt_tname.Size = new System.Drawing.Size(267, 30);
             this.txt_tname.TabIndex = 27;
+            this.txt_tname.TextChanged += new System.EventHandler(this.txt_tname_TextChanged);
             // 
             // label3
             // 

@@ -53,6 +53,18 @@ namespace School_Management_System
             {
                 MessageBox.Show("Missing Information");
             }
+            else if (!IsValidName(txt_tname.Text))
+            {
+                MessageBox.Show("Invalid Name. Only letters are allowed.", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            }
+            else if (!IsValidNumber(txt_tno.Text))
+            {
+                MessageBox.Show("Invalid Phone Number. Only numbers are allowed.", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            }
+            else if (txt_tno.Text.Length > 10)
+            {
+                MessageBox.Show("Phone Number should not exceed 10 characters.", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            }
             else
             {
                 try
@@ -81,6 +93,18 @@ namespace School_Management_System
             }
         }
 
+        //Validations
+        private bool IsValidName(string name)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(name, @"^[a-zA-Z]+$");
+        }
+        private bool IsValidNumber(string number)
+        {
+            return int.TryParse(number, out _);
+        }
+
+
+        //Close button
         private void btn_close_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -107,6 +131,8 @@ namespace School_Management_System
             
         }
 
+        
+
         //Delete Teachers
         private void btn_tdel_Click(object sender, EventArgs e)
         {
@@ -114,6 +140,7 @@ namespace School_Management_System
             {
                 MessageBox.Show("Select a Teacher", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             }
+         
             else
             {
                 try
@@ -142,6 +169,18 @@ namespace School_Management_System
             if (txt_tname.Text == "" || txt_tadd.Text == "" || txt_tno.Text == "" || cmb_tgen.SelectedIndex == -1 || cmb_tsub.SelectedIndex == -1)
             {
                 MessageBox.Show("Please select a teacher");
+            }
+            else if (!IsValidName(txt_tname.Text))
+            {
+                MessageBox.Show("Invalid Name. Only letters are allowed.", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            }
+            else if (!IsValidNumber(txt_tno.Text))
+            {
+                MessageBox.Show("Invalid Phone Number. Only numbers are allowed.");
+            }
+            else if (txt_tno.Text.Length > 10)
+            {
+                MessageBox.Show("Phone Number should not exceed 10 characters.");
             }
             else
             {
@@ -179,6 +218,11 @@ namespace School_Management_System
             MainMenu Obj = new MainMenu();
             Obj.Show();
             this.Hide();
+        }
+
+        private void txt_tname_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
